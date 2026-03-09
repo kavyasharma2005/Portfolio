@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kavya Sharma | Cyberpunk Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Poppins, sans-serif;
+background:#05060f;
+color:#e2e8f0;
+overflow-x:hidden;
+scroll-behavior:smooth;
+}
+
+canvas{position:fixed;top:0;left:0;z-index:-2}
+
+#grid{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+height:50vh;
+background:linear-gradient(#00ffff33 1px,transparent 1px),linear-gradient(90deg,#00ffff33 1px,transparent 1px);
+background-size:60px 60px;
+transform:perspective(400px) rotateX(60deg);
+transform-origin:bottom;
+animation:gridMove 6s linear infinite;
+z-index:-1;
+}
+
+@keyframes gridMove{from{background-position:0 0,0 0}to{background-position:0 60px,60px 0}}
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:#05060fcc;
+backdrop-filter:blur(6px);
+display:flex;
+justify-content:center;
+gap:35px;
+padding:15px;
+border-bottom:1px solid #00ffff33;
+z-index:100;
+}
+
+nav a{
+color:#00ffff;
+font-family:Orbitron;
+text-decoration:none;
+font-size:14px;
+display:flex;
+align-items:center;
+gap:6px;
+}
+
+nav a:hover{text-shadow:0 0 10px #00ffff}
+
+header{text-align:center;padding:180px 20px 120px}
+
+h1{font-family:Orbitron;font-size:56px;color:#00ffff;text-shadow:0 0 10px #00ffff,0 0 25px #00ffff}
+
+.typing{font-size:20px;color:#ff00ff;height:28px;margin-top:10px}
+
+section{padding:80px 20px;max-width:1000px;margin:auto;opacity:0;transform:translateY(40px);transition:.8s}
+
+section.visible{opacity:1;transform:translateY(0)}
+
+h2{font-family:Orbitron;color:#ff00ff;margin-bottom:15px;text-shadow:0 0 8px #ff00ff}
+
+.divider{height:1px;background:linear-gradient(90deg,transparent,#00ffff,transparent);margin:25px 0 35px}
+
+.skills{display:flex;flex-wrap:wrap}
+
+.skills span{background:#0f172a;border:1px solid #00ffff;padding:8px 14px;margin:6px;border-radius:6px;display:flex;align-items:center;gap:6px}
+
+.card{
+background:#0f172a;
+border:1px solid #00ffff33;
+padding:25px;
+border-radius:14px;
+transition:.3s;
+transform-style:preserve-3d;
+}
+
+.card:hover{transform:rotateY(6deg) rotateX(6deg) scale(1.03);box-shadow:0 0 25px #00ffff55}
+
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+
+a{color:#00ffff;text-decoration:none}
+
+button{background:#ff00ff;border:none;padding:10px 18px;border-radius:6px;color:white;font-weight:bold;margin-top:10px;cursor:pointer}
+
+button:hover{background:#00ffff;color:black}
+
+.stats{display:flex;flex-wrap:wrap;gap:20px;justify-content:center}
+
+.stats img{max-width:420px;border-radius:10px;border:1px solid #00ffff44}
+
+.terminal{background:#02030a;border:1px solid #00ffff44;padding:20px;font-family:monospace;border-radius:10px}
+
+.contact-links{display:flex;flex-direction:column;gap:10px}
+
+form{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+
+input,textarea{padding:10px;border:none;border-radius:6px}
+
+footer{text-align:center;padding:40px;margin-top:60px;border-top:1px solid #00ffff22;font-size:14px}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+<div id="grid"></div>
+
+<nav>
+<a href="#about"><i class="fa-solid fa-user"></i> About</a>
+<a href="#skills"><i class="fa-solid fa-code"></i> Skills</a>
+<a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
+<a href="#stats"><i class="fa-solid fa-chart-line"></i> Stats</a>
+<a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
+</nav>
+
+<header>
+<h1>Kavya Sharma</h1>
+<div class="typing" id="typing"></div>
+</header>
+
+<section>
+<h2>System Boot</h2>
+<div class="divider"></div>
+<div class="terminal" id="terminal"></div>
+</section>
+
+<section id="about">
+<h2>About Me</h2>
+<div class="divider"></div>
+<p>Computer Science Engineering student focused on Java backend development, algorithms, cloud, and scalable systems.</p>
+</section>
+
+<section id="skills">
+<h2>Skills</h2>
+<div class="divider"></div>
+<div class="skills">
+<span><i class="fa-brands fa-java"></i> Java</span>
+<span><i class="fa-brands fa-python"></i> Python</span>
+<span><i class="fa-brands fa-html5"></i> HTML</span>
+<span><i class="fa-brands fa-css3-alt"></i> CSS</span>
+<span><i class="fa-brands fa-js"></i> JavaScript</span>
+<span><i class="fa-brands fa-git-alt"></i> Git</span>
+<span><i class="fa-brands fa-linux"></i> Linux</span>
+<span><i class="fa-solid fa-leaf"></i> Spring Boot</span>
+</div>
+</section>
+
+<section id="projects">
+<h2>GitHub Projects</h2>
+<div class="divider"></div>
+<div class="projects-grid" id="projectsContainer"></div>
+</section>
+
+<section id="stats">
+<h2>Developer Stats</h2>
+<div class="divider"></div>
+<div class="stats">
+<img src="https://github-readme-stats.vercel.app/api?username=kavyasharma2005&show_icons=true&theme=tokyonight">
+<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=kavyasharma2005&layout=compact&theme=tokyonight">
+</div>
+</section>
+
+<section>
+<h2>LeetCode</h2>
+<div class="divider"></div>
+<img src="https://leetcard.jacoblin.cool/KavyaSharma2005?theme=dark&font=Orbitron&ext=contest" />
+</section>
+
+<section id="contact">
+<h2>Contact Me</h2>
+<div class="divider"></div>
+<div class="contact-links">
+<a href="https://github.com/kavyasharma2005" target="_blank"><i class="fa-brands fa-github"></i> GitHub</a>
+<a href="https://www.linkedin.com/in/kavya-sharma-8183273a8/" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+</div>
+
+<form action="https://formspree.io/f/xanqvovr" method="POST">
+<input type="text" name="name" placeholder="Your Name" required>
+<input type="email" name="email" placeholder="Your Email" required>
+<textarea name="message" rows="4" placeholder="Message"></textarea>
+<button type="submit">Send Message</button>
+</form>
+
+</section>
+
+<footer>
+<p>© 2026 Kavya Sharma</p>
+</footer>
+
+<script>
+
+const roles=["Java Developer","Backend Engineer","Cloud Learner","Problem Solver"]
+let i=0,j=0,current="",isDeleting=false
+
+function type(){
+current=roles[i]
+if(!isDeleting){j++}else{j--}
+
+document.getElementById("typing").textContent=current.substring(0,j)
+
+if(!isDeleting && j===current.length){isDeleting=true;setTimeout(type,1200);return}
+
+if(isDeleting && j===0){isDeleting=false;i=(i+1)%roles.length}
+
+setTimeout(type,isDeleting?50:100)
+}
+
+type()
+
+const lines=["Booting Portfolio...","Loading Developer Modules...","Connecting GitHub...","Interface Ready"]
+
+let lineIndex=0
+function terminal(){
+if(lineIndex<lines.length){
+const div=document.getElementById("terminal")
+div.innerHTML+=lines[lineIndex]+"<br>"
+lineIndex++
+setTimeout(terminal,700)
+}}
+
+terminal()
+
+const sections=document.querySelectorAll("section")
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible")}})
+})
+sections.forEach(sec=>observer.observe(sec))
+
+async function loadProjects(){
+const res=await fetch("https://api.github.com/users/kavyasharma2005/repos")
+const data=await res.json()
+const container=document.getElementById("projectsContainer")
+
+data.slice(0,6).forEach(repo=>{
+const div=document.createElement("div")
+div.className="card"
+div.innerHTML=`
+<h3><i class='fa-brands fa-github'></i> ${repo.name}</h3>
+<p>${repo.description || "GitHub Repository"}</p>
+<a href="${repo.html_url}" target="_blank"><button><i class="fa-solid fa-arrow-up-right-from-square"></i> View Repo</button></a>
+`
+container.appendChild(div)
+})
+}
+
+loadProjects()
+
+const canvas=document.getElementById("particles")
+const ctx=canvas.getContext("2d")
+canvas.width=window.innerWidth
+canvas.height=window.innerHeight
+
+let particles=[]
+for(let i=0;i<80;i++){
+particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-.5)*0.5,vy:(Math.random()-.5)*0.5,size:Math.random()*2})
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height)
+particles.forEach(p=>{
+p.x+=p.vx
+p.y+=p.vy
+if(p.x<0||p.x>canvas.width)p.vx*=-1
+if(p.y<0||p.y>canvas.height)p.vy*=-1
+ctx.fillStyle="#00ffff"
+ctx.beginPath()
+ctx.arc(p.x,p.y,p.size,0,Math.PI*2)
+ctx.fill()
+})
+requestAnimationFrame(animate)
+}
+
+animate()
+
+</script>
+
+</body>
+</html>
